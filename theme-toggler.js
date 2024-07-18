@@ -50,12 +50,12 @@ class ThemeToggler extends HTMLElement {
 
       this.innerHTML = `
         <button
-          id="theme-toggle"
+          id="theme-toggler"
           aria-label="Change to dark theme"
           state="auto">
           <span></span></button>`;
 
-      this.toggler = this.querySelector("#theme-toggle");
+      this.toggler = this.querySelector("#theme-toggler");
       this.storage = window.localStorage;
       this.root = document.documentElement;
       this.matchMedia = window.matchMedia('(prefers-color-scheme: dark)');
