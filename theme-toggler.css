@@ -1,0 +1,27 @@
+#theme-toggle {
+  font-size: 1em;
+}
+
+@media (prefers-color-scheme: light) {
+  #theme-toggle[state="dark"] span::before {
+    content: "☀️";
+  }
+  #theme-toggle[state="light"] span::before {
+    content: "🌑";
+  }
+  #theme-toggle[state="auto"] span::before {
+    content: "🌑";
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  #theme-toggle[state="dark"] span::before {
+    content: "☀️";
+  }
+  #theme-toggle[state="light"] span::before {
+    content: "🌑";
+  }
+  #theme-toggle[state="auto"] span::before {
+    content: "☀️";
+  }
+}
