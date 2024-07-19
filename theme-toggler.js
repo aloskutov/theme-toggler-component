@@ -65,9 +65,7 @@ class ThemeToggler extends HTMLElement {
       this.initialTheme();
       this.updateLabel();
 
-      this.matchMedia.onchange =(e) => {
-        this.updateLabel();
-      };
+      this.matchMedia.onchange = () => this.updateLabel();
     }
 
     /**
