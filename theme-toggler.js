@@ -44,7 +44,7 @@ class ThemeToggler extends HTMLElement {
      */
     setup () {
 
-      if (this._instantiated) return;
+      if (this._instantiated) { return; }
 
       this.innerHTML = `
         <button
@@ -71,12 +71,10 @@ class ThemeToggler extends HTMLElement {
      * and set if it defined in localStorage
      */
     initialTheme () {
-      const persistedTheme = this.storage.getItem('theme')
-      const hasTheme = typeof persistedTheme === 'string'
+      const persistedTheme = this.storage.getItem('theme');
+      const hasTheme = typeof persistedTheme === 'string';
 
-      if (hasTheme) {
-        this.changeState(persistedTheme)
-      }
+      if (hasTheme) { this.changeState(persistedTheme); }
     }
 
     /**
@@ -89,12 +87,12 @@ class ThemeToggler extends HTMLElement {
       const cleanState = states.includes(state) ? state : 'auto';
 
       this.toggler.setAttribute('state', cleanState);
-      this.storage.setItem('theme', cleanState)
+      this.storage.setItem('theme', cleanState);
 
       if (cleanState !== 'auto') {
-        this.root.setAttribute('data-theme', cleanState)
+        this.root.setAttribute('data-theme', cleanState);
       } else {
-        this.root.removeAttribute('data-theme')
+        this.root.removeAttribute('data-theme');
       }
     }
 
@@ -113,19 +111,17 @@ class ThemeToggler extends HTMLElement {
     getNextState () {
 
       const hasDark = this.matchMedia.matches;
-      const currentState = this.toggler.getAttribute('state');
+      const currentState = this.toggler.getAttribute('state').toLowerCase();
 
       switch (currentState) {
-        case 'auto':
-          return hasDark ? 'light' : 'dark';
-
         case 'light':
           return 'dark';
-
         case 'dark':
           return 'light';
+        default:
+          return hasDark ? 'light' : 'dark';
       }
     }
-  };
+  }
 
 window.customElements.define('theme-toggler', ThemeToggler);
