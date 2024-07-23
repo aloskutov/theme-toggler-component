@@ -19,22 +19,20 @@ class ThemeToggler extends HTMLElement {
 
     handleEvent (event) {
 
-      event.preventDefault()
+      event.preventDefault();
 
-      const hasDark = this.matchMedia.matches
+      const hasDark = this.matchMedia.matches;
+      const state = this.toggler.getAttribute('state').toLowerCase();
 
-      switch (this.toggler.getAttribute('state')) {
-        case 'auto':
-          this.changeState(hasDark ? 'light' : 'dark');
-          break;
-
-        case 'light':
-          this.changeState(hasDark ? 'auto' : 'dark');
-          break;
-
+      switch (state) {
         case 'dark':
           this.changeState(hasDark ? 'light' : 'auto');
           break;
+        case 'light':
+          this.changeState(hasDark ? 'auto' : 'dark');
+          break;
+        default:
+          this.changeState(hasDark ? 'light' : 'dark');
       }
       this.updateLabel();
     }
